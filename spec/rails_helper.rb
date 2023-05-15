@@ -1,6 +1,6 @@
 # SimpleCov
 require 'simplecov'
-Simplecov.start
+SimpleCov.start
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
@@ -64,4 +64,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Filter failing tests
+  config.example_status_persistance_file_path = 'spec/examples.txt'
+  # run with rspec --only-failures and --next-failure
 end
