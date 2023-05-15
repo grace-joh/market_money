@@ -206,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  coderay
   debug
   launchy
   pg (~> 1.1)
