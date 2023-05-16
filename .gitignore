@@ -27,3 +27,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore SimpleCov coverage
+/coverage
+
+# Ignore RSpec examples.txt
+/spec/examples.txt
