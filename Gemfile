@@ -57,3 +57,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
 end
+
+# JSON API Serializer
+gem 'jsonapi-serializer'
