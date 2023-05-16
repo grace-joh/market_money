@@ -68,6 +68,9 @@ RSpec.configure do |config|
   # Filter failing tests
   config.example_status_persistence_file_path = 'spec/examples.txt'
   # run with rspec --only-failures and --next-failure
+
+  # FactoryBot
+  config.include FactoryBot::Syntax::Methods
 end
 
 # Shoulda Matchers
