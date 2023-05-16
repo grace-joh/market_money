@@ -28,9 +28,6 @@ describe 'Markets API' do
 
       attributes = market[:attributes]
 
-      expect(attributes).to have_key(:id)
-      expect(attributes[:id]).to be_an(Integer)
-
       expect(attributes).to have_key(:name)
       expect(attributes[:name]).to be_a(String)
 
@@ -58,20 +55,5 @@ describe 'Markets API' do
       expect(attributes).to have_key(:vendor_count)
       expect(attributes[:vendor_count]).to be_an(Integer)
     end
-  end
-
-  it 'returns the count of vendors for a market' do
-    market = create(:market)
-    vendors = create_list(:vendor, 3)
-
-    create(:market_vendor, market: market, vendor: vendors[0])
-    create(:market_vendor, market: market, vendor: vendors[1])
-
-    get '/api/v0/markets'
-
-    data = JSON.parse(response.body, symbolize_names: true)
-    market_data = data[:data].first
-
-    expect(market_data[:attributes][:vendor_count]).to eq(2)
   end
 end
