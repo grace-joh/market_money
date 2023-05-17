@@ -1,8 +1,7 @@
 class Api::V0::MarketVendorsController < ApplicationController
   def create
-    market_vendor = MarketVendor.new(market_vendor_params)
     begin
-      market_vendor.save!
+      MarketVendor.create!(market_vendor_params)
       render_success_response
     rescue ActiveRecord::RecordInvalid => error
       handle_error_response(error, market_vendor_params)
