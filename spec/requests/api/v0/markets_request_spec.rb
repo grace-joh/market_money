@@ -142,6 +142,7 @@ describe 'Markets API' do
       it 'returns all vendors for a market' do
         market1 = create(:market)
         vendors = create_list(:vendor, 3)
+        vendor4 = create(:vendor)
 
         vendors.each do |vendor|
           create(:market_vendor, market: market1, vendor: vendor)
@@ -160,6 +161,7 @@ describe 'Markets API' do
         vendors_data.each do |vendor|
           expect(vendor).to have_key(:id)
           expect(vendor[:id]).to be_a(String)
+          expect(vendor[:id]).to_not eq(vendor4.id.to_s)
 
           expect(vendor).to have_key(:type)
           expect(vendor[:type]).to eq('vendor')
