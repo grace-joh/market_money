@@ -1,5 +1,5 @@
 class ErrorSerializer
-  def self.not_found(error)
+  def self.serialize(error)
     {
       "errors": [
         {
