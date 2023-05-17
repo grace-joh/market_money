@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'MarketVendors API' do
   describe 'Create a MarketVendor' do
     describe 'happy path' do
-      before(:all) do
+      before(:each) do
         @market1 = create(:market)
         @vendor1 = create(:vendor)
         @market_vendor_params = { market_id: @market1.id, vendor_id: @vendor1.id }
@@ -36,7 +36,7 @@ describe 'MarketVendors API' do
         vendor = vendors_data.first
         expect(vendor).to have_key(:id)
         expect(vendor[:id]).to be_a(String)
-        expect(vendor[:id]).to eq(@market1.id.to_s)
+        expect(vendor[:id]).to eq(@vendor1.id.to_s)
       end
     end
 
