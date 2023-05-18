@@ -1,10 +1,18 @@
 class Api::V0::MarketVendorsController < ApplicationController
   def create
-    begin
-      MarketVendor.create!(market_vendor_params)
-      render_success_response
-    rescue ActiveRecord::RecordInvalid => error
-      handle_error_response(error, market_vendor_params)
+    MarketVendor.create!(market_vendor_params)
+    render_success_response
+  rescue ActiveRecord::RecordInvalid => error
+    handle_error_response(error, market_vendor_params)
+  end
+
+  def destroy
+    market_vendor = MarketVendor.find_by(market_vendor_params)
+    if !market_vendor.nil?
+      market_vendor.destroy
+      # render json: market_vendor_params, status: 204
+    else
+      render_no_market_vendor_response(market_vendor_params)
     end
   end
 
@@ -30,5 +38,10 @@ class Api::V0::MarketVendorsController < ApplicationController
 
   def render_association_exists_response(error)
     render json: ErrorSerializer.serialize(error), status: 422
+  end
+
+  def render_no_market_vendor_response(params)
+    message = "No MarketVendor with market_id=#{params[:market_id]} AND vendor_id=#{params[:vendor_id]} exists"
+    render json: ErrorSerializer.serialize(message), status: 404
   end
 end
