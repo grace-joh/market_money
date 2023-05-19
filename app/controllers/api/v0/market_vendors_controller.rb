@@ -10,7 +10,6 @@ class Api::V0::MarketVendorsController < ApplicationController
     market_vendor = MarketVendor.find_by(market_vendor_params)
     if !market_vendor.nil?
       market_vendor.destroy
-      # render json: market_vendor_params, status: 204
     else
       render_no_market_vendor_response(market_vendor_params)
     end
