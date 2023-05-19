@@ -77,6 +77,12 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+# VCR
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+end
+
 def market_search_data
   @market1 = create(:market, name: "Dallas Farmer's Market", city: 'Dallas', state: 'Texas')
   @market2 = create(:market, name: "Lewisville Farmer's Market", city: 'Lewisville', state: 'Texas')

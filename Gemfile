@@ -56,7 +56,13 @@ group :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 # JSON API Serializer
 gem 'jsonapi-serializer'
+
+# for API consumption
+gem 'faraday'
+gem 'figaro'
