@@ -1,15 +1,17 @@
 class Atm
-  attr_reader :name,
+  attr_reader :id,
+              :name,
               :address,
               :lat,
               :lon,
               :distance
 
   def initialize(data)
-    @name = data[:name]
-    @address = data[:address]
-    @lat = data[:lat]
-    @lon = data[:lon]
-    @distance = data[:distance] / 1609.344
+    @name = data[:poi][:name]
+    @address = data[:address][:freeformAddress]
+    @lat = data[:position][:lat]
+    @lon = data[:position][:lon]
+    @distance = data[:dist] / 1609.344
+    @id = nil
   end
 end
