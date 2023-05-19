@@ -85,10 +85,10 @@ def market_search_data
   @market5 = create(:market, name: 'Edgewater Public Market', city: 'Louisville', state: 'Colorado')
   @market6 = create(:market, name: 'Rebel Marketplace', city: 'Aurora', state: 'Colorado')
 
-  # search by state = 'Co' = [@market4, @market5, @market6]
-  # search by city and state = 'ville' co = [@market4, @market5] - not 6 and 10
-  # search by name, city, and state = market ville colorado = [@market5]
-  # search by name and state = market tex = [@market1, @market2, @market3]
-  # search by name = farm = [@market1, @market2, @market3, @market4]
-  # no results search = tx = []
+  # search by { state=co } => [@market4, @market5, @market6]
+  # search by { city=ville&state=co } => [@market4, @market5]
+  # search by { name=farm&city=ville&state=co } => [@market5]
+  # search by { name=mark&state=tex } => [@market1, @market2, @market3]
+  # search by { name=farm } = [@market1, @market2, @market3, @market4]
+  # no results { state=tx } = []
 end
